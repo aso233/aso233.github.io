@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Git | aso233 blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Git简介Git是目前最流行的分布式版本控制系统，它的由来却是偶然：很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？事实是，在2002年以前，世界各地的志愿者把源代码文件通">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git">
+<meta property="og:url" content="http://yoursite.com/2016/06/12/Git/index.html">
+<meta property="og:site_name" content="aso233 blog">
+<meta property="og:description" content="Git简介Git是目前最流行的分布式版本控制系统，它的由来却是偶然：很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？事实是，在2002年以前，世界各地的志愿者把源代码文件通">
+<meta property="og:image" content="http://i.imgur.com/jTgSGfs.png">
+<meta property="og:image" content="http://i.imgur.com/O2oqxF1.png">
+<meta property="og:image" content="http://i.imgur.com/9LU71bb.png">
+<meta property="og:image" content="http://i.imgur.com/RQFEXwv.png">
+<meta property="og:image" content="http://i.imgur.com/hnKK2Kw.png">
+<meta property="og:image" content="http://i.imgur.com/twIcpsU.png">
+<meta property="og:image" content="http://i.imgur.com/smHC7JE.png">
+<meta property="og:image" content="http://i.imgur.com/n7nk1y0.png">
+<meta property="og:image" content="http://i.imgur.com/2spW0oj.png">
+<meta property="og:updated_time" content="2017-01-16T03:27:28.185Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git">
+<meta name="twitter:description" content="Git简介Git是目前最流行的分布式版本控制系统，它的由来却是偶然：很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？事实是，在2002年以前，世界各地的志愿者把源代码文件通">
+<meta name="twitter:image" content="http://i.imgur.com/jTgSGfs.png">
+  
+    <link rel="alternative" href="/atom.xml" title="aso233 blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="null" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">aso233</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="#" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">我是谁，我从哪里来，我到哪里去？我就是我，是颜色不一样的吃货…</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">aso233</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="null" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">aso233</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="#" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Git" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/12/Git/" class="article-date">
+  	<time datetime="2016-06-12T10:13:00.000Z" itemprop="datePublished">2016-06-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Git简介"><a href="#Git简介" class="headerlink" title="Git简介"></a>Git简介</h2><p>Git是目前最流行的分布式版本控制系统，它的由来却是偶然：<br>很多人都知道，Linus在1991年创建了开源的Linux，从此，Linux系统不断发展，已经成为最大的服务器系统软件了。<br>Linus虽然创建了Linux，但Linux的壮大是靠全世界热心的志愿者参与的，这么多人在世界各地为Linux编写代码，那Linux的代码是如何管理的呢？<br>事实是，在2002年以前，世界各地的志愿者把源代码文件通过diff的方式发给Linus，然后由Linus本人通过手工方式合并代码！<br>你也许会想，为什么Linus不把Linux代码放到版本控制系统里呢？不是有CVS、SVN这些免费的版本控制系统吗？因为Linus坚定地反对CVS和SVN，这些集中式的版本控制系统不但速度慢，而且必须联网才能使用。有一些商用的版本控制系统，虽然比CVS、SVN好用，但那是付费的，和Linux的开源精神不符。</p>
+<p>不过，到了2002年，Linux系统已经发展了十年了，代码库之大让Linus很难继续通过手工方式管理了，社区的弟兄们也对这种方式表达了强烈不满，于是Linus选择了一个商业的版本控制系统BitKeeper，BitKeeper的东家BitMover公司出于人道主义精神，授权Linux社区免费使用这个版本控制系统。</p>
+<p>安定团结的大好局面在2005年就被打破了，原因是Linux社区牛人聚集，不免沾染了一些梁山好汉的江湖习气。开发Samba的Andrew试图破解BitKeeper的协议（这么干的其实也不只他一个），被BitMover公司发现了（监控工作做得不错！），于是BitMover公司怒了，要收回Linux社区的免费使用权。</p>
+<p>Linus可以向BitMover公司道个歉，保证以后严格管教弟兄们，嗯，这是不可能的。实际情况是这样的：<br>Linus花了两周时间自己用C写了一个分布式版本控制系统，这就是Git！一个月之内，Linux系统的源码已经由Git管理了！牛是怎么定义的呢？大家可以体会一下。<br>Git迅速成为最流行的分布式版本控制系统，尤其是2008年，GitHub网站上线了，它为开源项目免费提供Git存储，无数开源项目开始迁移至GitHub，包括jQuery，PHP，Ruby等等。  </p>
+<h2 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h2><p>git下载地址：<a href="http://git-scm.com/download/" title="http://git-scm.com/download/" target="_blank" rel="external">http://git-scm.com/download/</a>, 目前最新版本为2.7.0<br>下载windows版本的安装包，安装完成之后，在右键菜单可以看到git的选项：  </p>
+<pre><code>Git Init Here  (在当前目录初始化一个git仓库)  
+Git Gui  (git图形界面)   
+Git Bash  (git命令行窗口)  
+</code></pre><p>点击Git Bash选项打开git命令行窗口，说明安装成功。<br>安装完成之后需要配置name和email</p>
+<pre><code>git config --global user.name &quot;Your Name&quot;  
+git config --global user.email &quot;email@example.com&quot;
+</code></pre><p>注意：git config命令的–global参数，用了这个参数，表示你这台机器上所有的Git仓库都会使用这个配置，不加则表示只用于当前仓库。</p>
+<h2 id="Git基本操作"><a href="#Git基本操作" class="headerlink" title="Git基本操作"></a>Git基本操作</h2><p><strong>1. 创建git仓库</strong></p>
+<p>新建一个GitTest目录，在该目录下打开git命令行窗口输入：  </p>
+<pre><code>git init  
+git status  
+</code></pre><p>git init执行之后，当前目录下将自动生成.git文件夹，保存仓库的版本信息和提交记录等。<br>git status 显示如下：<br><img src="http://i.imgur.com/jTgSGfs.png" alt=""><br>从输出信息可以看出当前仓库处于默认的master分支上，并且nothing to commit表示当前工作区是干净的，没有任何修改。</p>
+<p><strong>2. 添加文件</strong><br>在目录中添加一个Test.txt文件，文件内容随意输入。  </p>
+<pre><code>git status  
+</code></pre><p><img src="http://i.imgur.com/O2oqxF1.png" alt="">  </p>
+<p>红色表示该文件处于工作区，还未加入暂存区，可使用add命令将其加入：  </p>
+<pre><code>git add Test.txt  
+</code></pre><p><img src="http://i.imgur.com/9LU71bb.png" alt=""><br>绿色表示该文件已经加入暂存区，但还未提交到git仓库中。  </p>
+<p><strong>3. 撤销修改</strong><br>使用checkout命令可撤销修改，工作区的内容还原到修改之前：  </p>
+<pre><code>git checkout Test.txt  
+</code></pre><p>reset HEAD可将暂存区中的内容还原至工作区：</p>
+<pre><code>git reset HEAD
+</code></pre><p>revert HEAD 生成一个新的提交来撤销某次提交  </p>
+<pre><code>git revert HEAD
+</code></pre><p><strong>4. 提交修改</strong><br>使用commit命令将暂存区中的内容提交到版本仓库中：  </p>
+<pre><code>git commit -m &quot;first commit&quot;  // -m 后为提交的log信息
+</code></pre><p>通过git log可查看仓库的提交信息：<br><img src="http://i.imgur.com/RQFEXwv.png" alt=""></p>
+<p><strong>5. 创建分支</strong> </p>
+<pre><code>git branch develop  
+git branch -a   
+</code></pre><p><img src="http://i.imgur.com/hnKK2Kw.png" alt=""></p>
+<p>或者使用  </p>
+<pre><code>git branch -b develop  
+</code></pre><p>创建成功之后将自动切换到develop分支上  </p>
+<p><strong>6. 切换分支</strong>  </p>
+<pre><code>git checkout develop
+</code></pre><p><img src="http://i.imgur.com/twIcpsU.png" alt=""><br>切换到另一个分支之前最好确认当前分支的工作区和暂存区是否干净，以免造成混淆。</p>
+<h2 id="Git远程仓库操作"><a href="#Git远程仓库操作" class="headerlink" title="Git远程仓库操作"></a>Git远程仓库操作</h2><p><strong>1. 关联远程仓库</strong></p>
+<pre><code>git remote add &lt;主机名&gt; &lt;网址&gt;  
+git remote rm &lt;主机名&gt;  
+git remote rename &lt;原主机名&gt; &lt;新主机名&gt;  
+</code></pre><p><strong>2. git克隆</strong>  </p>
+<p>支持多种协议： </p>
+<pre><code>git clone &lt;版本库的网址&gt; &lt;本地目录名&gt;  
+
+git clone http[s]://example.com/path/to/repo.git/  
+git clone ssh://example.com/path/to/repo.git/  
+git clone git://example.com/path/to/repo.git/  
+git clone /opt/git/project.git   
+git clone file:///opt/git/project.git  
+git clone ftp[s]://example.com/path/to/repo.git/  
+git clone rsync://example.com/path/to/repo.git/  
+</code></pre><p><strong>2. 切换远程分支</strong></p>
+<pre><code>git branch -a  
+git checkout -b 本地分支名 远程主机名/远程分支名   
+</code></pre><p>或者  </p>
+<pre><code>git checkout -t 远程主机名/远程分支名 //默认会在本地建立一个和远程分支名字一样的分支
+</code></pre><p><strong>3. 远程分支拉取</strong></p>
+<ul>
+<li><p>fetch：只拉取信息，并未进行merge  </p>
+<pre><code>git fetch 
+</code></pre><p>  将某个远程主机的更新，全部取回本地</p>
+<pre><code>git fetch &lt;远程主机名&gt; &lt;分支名&gt;
+</code></pre><p>  取回origin主机的master分支</p>
+</li>
+</ul>
+<ul>
+<li><p>pull：相当于做了fetch 和 merge</p>
+<pre><code>git pull &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;  
+</code></pre></li>
+</ul>
+<p>如果远程分支是与当前分支合并，则冒号后面的部分可以省略。</p>
+<p><strong>4. 远程分支推送</strong> </p>
+<pre><code>git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;   
+</code></pre><p>如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。 </p>
+<pre><code>git push --all origin 
+</code></pre><p>将本地的所有分支都推送到远程主机，这时需要使用–all选项。</p>
+<h2 id="git别名配置"><a href="#git别名配置" class="headerlink" title="git别名配置"></a>git别名配置</h2><p>为了便于输入，可以为git常用的命令配置别名，下面是一些常用的别名设置：</p>
+<pre><code>git config --global alias.st status  
+git config --global alias.co checkout  
+git config --global alias.ci commit  
+git config --global alias.br branch  
+git config --global alias.lg &quot;log --color --graph --pretty=format:&apos;%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)&lt;%an&gt;%Creset&apos; --abbrev-commit&quot;
+</code></pre><h2 id="在本地模拟远程仓库的创建和推送（工作目录为F-GitTest-）"><a href="#在本地模拟远程仓库的创建和推送（工作目录为F-GitTest-）" class="headerlink" title="在本地模拟远程仓库的创建和推送（工作目录为F:/GitTest/）"></a>在本地模拟远程仓库的创建和推送（工作目录为F:/GitTest/）</h2><p><strong>1. 创建远程仓库</strong>  </p>
+<p>创建G_Server目录，在目录下打开Git Bash并执行创建仓库命令，创建仓库的方式有两种：</p>
+<ul>
+<li><p>裸仓库，只会生成一类文件用于记录版本库历史记录的.git目录下面的文件;而不会包含实际项目源文件的拷贝。</p>
+<pre><code>git --bare init &lt;目录名&gt;
+</code></pre></li>
+<li><p>包含实际项目源文件的拷贝。       </p>
+<pre><code>git init  
+</code></pre></li>
+</ul>
+<p>如果你需要操作远程仓库的git库的话，应该使用git init，因为裸仓库只保存了git的历史提交和版本信息，并不允许进行git操作，会得到“This operation must be run in a work tree”错误提示。如果远程仓库不希望让人操作，则最好选择裸仓库。  </p>
+<p><strong>2. 创建本地仓库1，提交内容到远程仓库</strong></p>
+<ul>
+<li><p>创建G_Client1目录，初始化仓库，添加测试文件Test.txt，并提交到本地    </p>
+<pre><code>echo &quot;112233&quot;&gt;Test.txt  
+git add Test.txt  
+git ci -m “first commit from client1”  
+</code></pre></li>
+<li><p>关联远程仓库信息并推送到远程仓库:  </p>
+</li>
+</ul>
+<p>远程仓库为裸仓库  </p>
+<pre><code>git remote add origin file:///F:/GitTest/G_Server/目录名  
+</code></pre><p>远程仓库非裸仓库：  </p>
+<pre><code>git remote add origin file:///F:/GitTest/G_Server/.git
+git push origin master  
+</code></pre><p>如果远程仓库并不是以裸仓库的形式创建，且要推送的分支刚好是当前分支，则此推送可能会失败，:<br><img src="http://i.imgur.com/smHC7JE.png" alt=""><br>根据提示修改远程仓库 .git/config配置文件，加入：<br> [receive]<br>    denyCurrentBranch = ignore<br>重新提交即可成功。<br><strong>3. 创建本地仓库2，拉取远程仓库信息</strong>  </p>
+<p>创建G_Client2目录，初始化仓库，关联远程仓库</p>
+<pre><code>git init  
+git remote add origin file:///F:/GitTest/G_Server/目录名  
+git fetch origin  
+git pull origin master  
+</code></pre><p>拉取成功之后，目录下会生成远程仓库中的内容Test.txt，并且通过git log可查看提交记录。</p>
+<p><strong>4. 本地仓库2推送修改内容到远程仓库，本地仓库1拉取更新信息</strong>  </p>
+<ul>
+<li><p>修改G_Client2目录下的Test.txt文件内容为“336699”，提交并推送</p>
+<pre><code>echo &quot;336699&quot;&gt;Test.txt  
+git add .  
+git ci -m &quot;do some modification by client2&quot;      
+git push origin master  
+</code></pre></li>
+<li><p>在G_Client1下拉取远程仓库更新信息，并进行更新  </p>
+<pre><code>git fetch      
+git pull origin master  
+</code></pre></li>
+</ul>
+<p><img src="http://i.imgur.com/n7nk1y0.png" alt="">  </p>
+<p>此时Test.txt文件已经修改，通过git log可查看提交记录：<br><img src="http://i.imgur.com/2spW0oj.png" alt="">  </p>
+<p>通过本地模拟可基本了解远程仓库一些基本操作，也可将远程仓库放到网络服务器或者托管网站，如github中，将代码或者笔记随时提交到远程仓库，这样既安全也方便自己随时随地查看。</p>
+<h1 id="2016-09-07补充"><a href="#2016-09-07补充" class="headerlink" title="2016.09.07补充"></a>2016.09.07补充</h1><h2 id="图形工具扩展"><a href="#图形工具扩展" class="headerlink" title="图形工具扩展"></a>图形工具扩展</h2><ul>
+<li><p>配置git解决冲突图形工具（以beyond Compare4为例）<br>  配置Git安装目录下的/etc/gitconfig文件，追加或者修改如下：  </p>
+<pre><code>[diff]  
+    tool = bc4  
+[difftool]  
+    prompt = false  
+[difftool &quot;bc4&quot;]  
+    cmd = &quot;\&quot;D:/Program Files/Beyond Compare 4/BCompare.exe\&quot; \&quot;$LOCAL\&quot; \&quot;$REMOTE\&quot;&quot;  
+
+[merge]  
+    tool = bc4  
+[mergetool]  
+    prompt = false  
+[mergetool &quot;bc4&quot;]  
+    cmd = &quot;\&quot;D:/Program Files/Beyond Compare 4/BCompare.exe\&quot; \&quot;$PWD/$LOCAL\&quot; \&quot;$PWD/$REMOTE\&quot; \&quot;$PWD/$BASE\&quot; \&quot;$PWD/$MERGED\&quot;&quot;
+    keepBackup = false
+    trustExitCode = false  
+</code></pre><p>  配置工具：  </p>
+<pre><code>git config --global merge.tool bc4  
+git config --global diff.tool bc4
+</code></pre><p>  先执行git merge branch_name 当合并分支出现冲突时，执行</p>
+<pre><code>git mergetool [filename]
+</code></pre><p>  即可打开beyondCompare进行代码合并。<br>  （四个界面，LOCAL为本地分支修改内容，BASE为修改前的内容，REMOTE为要合并的分支修改的内容，MERGED为修改之后的最终内容）  </p>
+<p>  同样也可用</p>
+<pre><code>git difftool   
+</code></pre><p>  调用beyondCompare查看修改内容  </p>
+</li>
+<li><p>sourceTree</p>
+</li>
+</ul>
+<h1 id="2016-09-29补充"><a href="#2016-09-29补充" class="headerlink" title="2016.09.29补充"></a>2016.09.29补充</h1><h4 id="删除远程仓库的某次错误提交"><a href="#删除远程仓库的某次错误提交" class="headerlink" title="删除远程仓库的某次错误提交"></a>删除远程仓库的某次错误提交</h4><pre><code>git reset –mixed      此为默认方式，不带任何参数的git reset，就是这种方式，它回退到某个版本，只保留源码，回退commit和stage信息
+git reset –soft     回退到某个版本， 只回退了commit的信息，不会恢复stage（如果还要提交，直接commit即可)
+git reset –hard      彻底回退到某个版本， 本地的源码也会变为上一个版本的内容
+</code></pre><p>方法一. 将本地版本reset到指定版本，然后 git push -f(force)到远程分支<br>方法二. 将本地reset到指定版本，删除远程分支，git push origin :master(删除前先备份), 重新提交  </p>
+<h1 id="2016-10-08补充"><a href="#2016-10-08补充" class="headerlink" title="2016.10.08补充"></a>2016.10.08补充</h1><h4 id="git-删除已经-add-的文件"><a href="#git-删除已经-add-的文件" class="headerlink" title="git 删除已经 add 的文件"></a>git 删除已经 add 的文件</h4><p>使用 git rm 命令即可，有两种选择：<br>一种是 git rm –cached “文件路径”，不删除物理文件，仅将该文件从缓存中删除；<br>一种是 git rm –f “文件路径”，不仅将该文件从缓存中删除，还会将物理文件删除（不会回收到垃圾桶）。</p>
+<h2 id="Git-常见问题记录"><a href="#Git-常见问题记录" class="headerlink" title="Git 常见问题记录"></a>Git 常见问题记录</h2><ol>
+<li><p>git add 时提示 “Filename too long” 解决办法 </p>
+<blockquote>
+<p>git config –global core.longpaths true</p>
+</blockquote>
+</li>
+<li><p>从ftp服务器克隆： git clone ssh://MartinLin@192.168.201.12:3600/home/MartinLin/repository/LocalPack  </p>
+</li>
+<li>从局域网克隆：git clone //BY-01-1146/LocalPack</li>
+</ol>
+<p>参考：<br><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" title="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000</a><br><a href="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" title="http://www.ruanyifeng.com/blog/2014/06/git_remote.html" target="_blank" rel="external">http://www.ruanyifeng.com/blog/2014/06/git_remote.html</a><br><a href="http://my.oschina.net/u/1010578/blog/348731" title="http://my.oschina.net/u/1010578/blog/348731" target="_blank" rel="external">http://my.oschina.net/u/1010578/blog/348731</a><br>beyondCompare下载地址：<a href="http://www.scootersoftware.com/download.php" title="http://www.scootersoftware.com/download.php" target="_blank" rel="external">http://www.scootersoftware.com/download.php</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/06/12/AndfixTool/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          AndfixTool
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/06/11/xutils/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">xutils HttpUtils</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Git" data-title="Git" data-url="http://yoursite.com/2016/06/12/Git/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2017 aso233
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
