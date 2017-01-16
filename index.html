@@ -74,7 +74,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -194,6 +194,105 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-CentOS 搭建android环境" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/06/12/CentOS 搭建android环境/" class="article-date">
+  	<time datetime="2016-06-12T10:13:00.000Z" itemprop="datePublished">2016-06-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/12/CentOS 搭建android环境/">CentOS 搭建android环境</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CentOS-搭建android环境"><a href="#CentOS-搭建android环境" class="headerlink" title="CentOS 搭建android环境"></a>CentOS 搭建android环境</h1><ol>
+<li>安装JAVA环境<ul>
+<li>下载jdk或者jre ：<br><a href="http://www.oracle.com/technetwork/java/javase/downloads/index.html" title="http://www.oracle.com/technetwork/java/javase/downloads/index.html" target="_blank" rel="external">http://www.oracle.com/technetwork/java/javase/downloads/index.html</a>    </li>
+<li>配置环境变量<br>在/etc/profile中加入java路径，如：<br><code>export JAVA_HOME=/usr/local/soft/jdk1.6.0_14</code><br><code>export PATH=$JAVA_HOME/bin:$PATH</code><br><code>export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar</code>  </li>
+</ul>
+</li>
+</ol>
+<ol>
+<li><p>安装android SDK</p>
+<ul>
+<li>下载android SDK： <a href="https://developer.android.com/studio/index.html" title="https://developer.android.com/studio/index.html" target="_blank" rel="external">https://developer.android.com/studio/index.html</a> 并解压  </li>
+<li>配置环境变量<br>在/etc/profile中加入android SDK解压路径，如：<br><code>export ANDROID_HOME=/usr/local/soft/android-sdk-linux</code><br><code>export PATH=$ANDROID_HOME/tools:$PATH</code></li>
+<li>更新SDK<br><code>android list sdk -a</code> 列出当前所有SDK和工具版本列表<br><code>android update sdk -a -u -t 1,2,3</code> 选择更新列表中的某几项(list sdk -a列表的序号)，不加-t参数则表示全部更新</li>
+</ul>
+</li>
+<li><p>安装ANT    </p>
+<ul>
+<li>下载ant包：<a href="http://ant.apache.org/bindownload.cgi" title="http://ant.apache.org/bindownload.cgi" target="_blank" rel="external">http://ant.apache.org/bindownload.cgi</a>，并解压  </li>
+<li>配置环境变量<br>在/etc/profile中加入ant解压路径，如：<br><code>ANT_HOME=/usr/local/soft/apache-ant-1.9.7</code><br><code>PATH=$PATH:$ANT_HOME/bin</code>   </li>
+</ul>
+</li>
+<li><p>ANT打包错误</p>
+<ul>
+<li><p>“Cannot run program “/usr/local/android-sdk-linux/build-tools/19.0.3/aapt”: error=2, No such file or director”<br>Android SDK里面提供的一些工具，比如adb、aapt、zipalign等， 都会依赖32-bit的库，如果系统是64-bit的话，也必须安装这些32-bit的库，如下：<br><code>sudo yum install -y glibc.i686 zlib.i686 libstdc++.i686</code>  </p>
+</li>
+<li><p>“/lib64/libc.so.6: version ‘GLIBC_2.14’ not found (required by /usr/local/soft/android-sdk-linux/build-tools/24.0.1/aapt)”<br>使用android最新build tool版本（目前为24.0.1）则要求系统glibc库为2.14。两种方案：一是指定android build tool的版本为较低的版本（如19.1）， 二是更新libc库，记录更新方法如下：  </p>
+<p>  执行<code>strings /lib64/libc.so.6 | grep GLIBC</code>    查看系统libc版本：<br>GLIBC_2.2.5<br>GLIBC_2.2.6<br>GLIBC_2.3<br>GLIBC_2.3.2<br>GLIBC_2.3.3<br>GLIBC_2.3.4<br>GLIBC_2.4<br>GLIBC_2.5<br>GLIBC_2.6<br>GLIBC_2.7<br>GLIBC_2.8<br>GLIBC_2.9<br>GLIBC_2.10<br>GLIBC_2.11<br>GLIBC_2.12<br>GLIBC_PRIVATE<br>系统最高版本是2.12，但是android编译需要2.14，于是自己编译安装：<br><code>wget http://ftp.gnu.org/gnu/glibc/glibc-2.14.tar.gz</code><br><code>tar -zxvf glibc-2.14.tar.gz &amp;&amp; cd glibc-2.14 &amp;&amp; mkdir build &amp;&amp; cd build</code><br><code>../configure --prefix=/opt/glibc-2.14</code><br><code>make -j4</code><br><code>make install</code><br><code>cp -r /etc/ld.so.c* /opt/glibc-2.14/etc/</code><br><code>ln -sf /opt/glibc-2.14/lib/libc-2.14.so /lib64/libc.so.6</code><br><code>export LD_LIBRARY_PATH=/opt/glibc-2.14/lib:$LD_LIBRARY_PATH</code>  </p>
+<p>  再次执行 <code>strings /lib64/libc.so.6 | grep GLIBC</code><br>GLIBC_2.2.5<br>GLIBC_2.2.6<br>GLIBC_2.3<br>GLIBC_2.3.2<br>GLIBC_2.3.3<br>GLIBC_2.3.4<br>GLIBC_2.4<br>GLIBC_2.5<br>GLIBC_2.6<br>GLIBC_2.7<br>GLIBC_2.8<br>GLIBC_2.9<br>GLIBC_2.10<br>GLIBC_2.11<br>GLIBC_2.12<br>GLIBC_2.13<br>GLIBC_2.14<br>GLIBC_PRIVATE<br>出现2.14说明更新成功。</p>
+</li>
+<li><p>Error:  Multilib version problems found. This often means that the root<br> cause is something else and multilib version checking is just<br> pointing out that there is a problem. Eg.:</p>
+<ol>
+<li><p>You have an upgrade for libstdc++ which is missing some<br>dependency that another package requires. Yum is trying to<br>solve this by installing an older version of libstdc++ of the<br>different architecture. If you exclude the bad architecture<br>yum will tell you what the root cause is (which package<br>requires what). You can try redoing the upgrade with<br>–exclude libstdc++.otherarch … this should give you an error<br>message showing the root cause of the problem.</p>
+</li>
+<li><p>You have multiple architectures of libstdc++ installed, but<br>yum can only see an upgrade for one of those arcitectures.<br>If you don’t want/need both architectures anymore then you<br>can remove the one with the missing update and everything<br>will work.</p>
+</li>
+<li><p>You have duplicate versions of libstdc++ installed already.<br>You can use “yum check” to get yum show these errors.</p>
+<p>   …you can also use –setopt=protected_multilib=false to remove<br>this checking, however this is almost never the correct thing to<br>do as something else is very likely to go wrong (often causing<br>much more problems).</p>
+<p>   Protected multilib versions: libstdc++-4.4.7-17.el6.i686 != libstdc++-4.4.7-16.el6.x86_64   </p>
+<p>应该是库的版本不对吧，先更新一下64位的库，然后再安装：  </p>
+<p><code>yum  update  libstdc++-4.4.7-16.el6.x86_64</code><br><code>yum install libstdc++.i686</code></p>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<p>参考：<br><a href="https://linux.cn/article-5966-1.html" title="https://linux.cn/article-5966-1.html" target="_blank" rel="external">https://linux.cn/article-5966-1.html</a><br><a href="http://fpliu-blog.chinacloudsites.cn/it/os/android/sdk/installation/on-centos" title="http://fpliu-blog.chinacloudsites.cn/it/os/android/sdk/installation/on-centos" target="_blank" rel="external">http://fpliu-blog.chinacloudsites.cn/it/os/android/sdk/installation/on-centos</a><br><a href="http://www.cnblogs.com/qingchen1984/p/5757181.html" title="http://www.cnblogs.com/qingchen1984/p/5757181.html" target="_blank" rel="external">http://www.cnblogs.com/qingchen1984/p/5757181.html</a></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-AndfixTool" class="article article-type-post" itemscope itemprop="blogPost">
   
