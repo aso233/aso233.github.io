@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>xutils HttpUtils | aso233 blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="xutils HttpUtils近期由于项目需要开始研究学习xuitls框架，xutils是一款相当比较成熟的框架，主要模块涵盖了界面，数据库，网络以及图片缓存处理，已经基本能够满足一个app所需，此次重点学习其网络模块 HttpUtils。github项目托管地址: https://github.com/wyouflf/xUtils.git">
+<meta property="og:type" content="article">
+<meta property="og:title" content="xutils HttpUtils">
+<meta property="og:url" content="http://yoursite.com/2014/08/20/xutils/index.html">
+<meta property="og:site_name" content="aso233 blog">
+<meta property="og:description" content="xutils HttpUtils近期由于项目需要开始研究学习xuitls框架，xutils是一款相当比较成熟的框架，主要模块涵盖了界面，数据库，网络以及图片缓存处理，已经基本能够满足一个app所需，此次重点学习其网络模块 HttpUtils。github项目托管地址: https://github.com/wyouflf/xUtils.git">
+<meta property="og:image" content="http://i.imgur.com/3zTHmHy.png">
+<meta property="og:image" content="http://i.imgur.com/VD2dx4Y.png">
+<meta property="og:image" content="http://i.imgur.com/Vg43hgO.png">
+<meta property="og:image" content="http://i.imgur.com/NlGXtCG.png">
+<meta property="og:image" content="http://i.imgur.com/Z8jl2mI.png">
+<meta property="og:image" content="http://i.imgur.com/prWdR2C.png">
+<meta property="og:image" content="http://i.imgur.com/9wMvyvK.png">
+<meta property="og:image" content="http://i.imgur.com/uorSaPp.png">
+<meta property="og:image" content="http://i.imgur.com/eEYsO9d.png">
+<meta property="og:image" content="http://i.imgur.com/Vg43hgO.png">
+<meta property="og:image" content="http://i.imgur.com/lNd0Nr6.png">
+<meta property="og:image" content="http://i.imgur.com/l4Drb1x.png">
+<meta property="og:updated_time" content="2017-03-08T08:43:50.626Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="xutils HttpUtils">
+<meta name="twitter:description" content="xutils HttpUtils近期由于项目需要开始研究学习xuitls框架，xutils是一款相当比较成熟的框架，主要模块涵盖了界面，数据库，网络以及图片缓存处理，已经基本能够满足一个app所需，此次重点学习其网络模块 HttpUtils。github项目托管地址: https://github.com/wyouflf/xUtils.git">
+<meta name="twitter:image" content="http://i.imgur.com/3zTHmHy.png">
+  
+    <link rel="alternative" href="/atom.xml" title="aso233 blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/coderwall.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/123.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">aso233</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">首页</a></li>
+                        
+                            <li><a href="/archives">文章列表</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#97;&#115;&#111;&#50;&#51;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/aso233" title="github">github</a>
+                            
+                                <a class="fl facebook" target="_blank" href="https://www.facebook.com/lin.shunneng" title="facebook">facebook</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/Apktool/" style="font-size: 10px;">Apktool</a> <a href="/tags/AysncTask/" style="font-size: 10px;">AysncTask</a> <a href="/tags/CentOS，-android环境搭建/" style="font-size: 10px;">CentOS， android环境搭建</a> <a href="/tags/Git/" style="font-size: 10px;">Git</a> <a href="/tags/xutils/" style="font-size: 10px;">xutils</a> <a href="/tags/多线程下载/" style="font-size: 10px;">多线程下载</a> <a href="/tags/热修复/" style="font-size: 10px;">热修复</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://hellokugo.github.io/">hellokugo</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://cstsinghua.github.io/">cstsinghua</a>
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="https://haiolv.github.io/">haiolv</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">aso233</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/123.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">aso233</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">首页</a></li>
+                
+                    <li><a href="/archives">文章列表</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=&#97;&#115;&#111;&#50;&#51;&#51;&#64;&#113;&#113;&#46;&#99;&#111;&#109;" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/aso233" title="github">github</a>
+                    
+                        <a class="facebook" target="_blank" href="https://www.facebook.com/lin.shunneng" title="facebook">facebook</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-xutils" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2014/08/20/xutils/" class="article-date">
+      <time datetime="2014-08-20T10:13:00.000Z" itemprop="datePublished">2014-08-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      xutils HttpUtils
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/AysncTask/">AysncTask</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/xutils/">xutils</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="xutils-HttpUtils"><a href="#xutils-HttpUtils" class="headerlink" title="xutils HttpUtils"></a>xutils HttpUtils</h1><p>近期由于项目需要开始研究学习xuitls框架，xutils是一款相当比较成熟的框架，主要模块涵盖了界面，数据库，网络以及图片缓存处理，已经基本能够满足一个app所需，此次重点学习其网络模块 HttpUtils。<br>github项目托管地址: <a href="https://github.com/wyouflf/xUtils.git" target="_blank" rel="external">https://github.com/wyouflf/xUtils.git</a><br><a id="more"></a><br>HttpUtils主要提供了以下几种接口：  </p>
+<ol>
+<li>configxxxxx： 配置参数信息，包括：返回结果字符编码，Http本地缓存大小、有效期等，超时时间。  </li>
+<li>sendxxx：发送请求接口，包括常规的send和sendSync  </li>
+<li>download：下载接口，重载了多种不同参数配置方法<br>xUtils网络通信方式使用了HttpClinet，在HttpUtils构造方法中便初始化了HttpClient，并初始化了部分参数。  </li>
+</ol>
+<p>此次我们重点分析xutils的下载接口，分析之前先要了解几个关键的java类：Callable, FutrueTask。  </p>
+<p>Callable：类似Runnable接口，都可以被其他线程执行，Runnable声明方法为run(),Callable声明方法为call();Callable有返回值且可抛出异常，callable一般结合FutureTask进行使用。  </p>
+<p>Future：提供访问任务执行结果的接口。<br><img src="http://i.imgur.com/3zTHmHy.png" alt=""><br>像之前使用Runnable开始执行任务之后，我们就无法获取任务执行的状态，也无法在任务完成后得到返回值，只能通过公共变量或者接口来实现。通过Futrue和Callable可以实现获取其他线程执行状态，任务执行完成后也可得到返回结果。从Java 1.5开始，就提供了Callable和Future，应该也是为了弥补Runnable的不足。</p>
+<p>了解了上述两个关键的java类之后，我们来看看xUtils的下载接口实现：<br><img src="http://i.imgur.com/VD2dx4Y.png" alt=""><br>调用下载接口后，首先进行一些参数过滤之后创建了HttpRequest对象，封装保存请求参数信息，然后创建了HttpHandler对象，重点就是这个HttpHandler类。它继承了一个实现了Futrue接口的类PriorityAsyncTask<params, progress,="" result="">,在创建实例时便将httpClinet，charset等信息通过构造传递进去，然后设置了一些其他参数后调用了handher.executeExecutor()方法。<br><img src="http://i.imgur.com/Vg43hgO.png" alt=""><br>在executeOnExecutor方法中，我们看到了onPreExecute(),是不是很眼熟？没错，就是android异步处理任务AyncTask中的方法。实际上，xutils的http多线程框架是沿用了AyncTask的异步处理机制。下面我们跟着代码分析简单分析一下：<br>我们看到了mWoker,mFutrue两个变量，他们在构造方法中进行了初始化：<br><img src="http://i.imgur.com/NlGXtCG.png" alt=""><br><img src="http://i.imgur.com/Z8jl2mI.png" alt=""><br>mWoker实现了Callable接口，FutureTask实现了Futrue接口，他们结合在一起便是为了实现我们之前说过的获取其他线程执行状态的功能。在mWoker call()方法中，我们看到熟悉的doInBackground(),这里的mParams就是在executeOnExecutor开始时设置的params。<br>doInBackground()是抽象方法，我们在PriorityAsyncTask的子类HttpHandler中看到了其具体实现：<br><img src="http://i.imgur.com/prWdR2C.png" alt=""><br>我们看到了真正发送请求以及接受响应的地方。也看到另一个熟悉的方法publishProgress()<br><img src="http://i.imgur.com/9wMvyvK.png" alt=""><br><img src="http://i.imgur.com/uorSaPp.png" alt=""><br><img src="http://i.imgur.com/eEYsO9d.png" alt=""><br>可以发现，AsyncTask实际也是通过内部的一个Handler进行UI线程消息的处理，到此我们已经见到了AsyncTask大多数的方法了。  </params,></p>
+<p>刚才说到了在构造中初始化了mWorker，mFuture两个对象，回到handher.executeExecutor()方法<br><img src="http://i.imgur.com/Vg43hgO.png" alt=""><br>我们看到调用了exec.execute()的方法，这个就是使用线程池来执行Futrue实例，exec是download方法传入<br>handler.executeOnExecutor(EXECUTOR, request, target, autoResume, autoRename)的EXECUTOR<br><img src="http://i.imgur.com/lNd0Nr6.png" alt=""><br><img src="http://i.imgur.com/l4Drb1x.png" alt=""><br>可以看出，xUtils内部使用了一个基于优先级的自定义线程池PriorityExecutor，拥有一个优先级缓存队列PriorityObjectBlockingQueue，可通过下载接口参数配置任务的优先级，当前使用的线程池最大容量为256，线程活跃队列为5个,等待时间1s。</p>
+<p>通过对xutils下载模块的学习，深入理解了AsyncTask的工作原理，发现对JAVA并发线程许多东西不太了解，如果不理解其中几个关键的JAVA类，理解框架的内容就比较吃力，今后还需多看点这方面的资料。</p>
+<p>参考：<br><a href="http://www.cnblogs.com/dolphin0520/p/3949310.html" target="_blank" rel="external">http://www.cnblogs.com/dolphin0520/p/3949310.html</a><br> <a href="http://blog.csdn.net/lmj623565791/article/details/38614699" target="_blank" rel="external">http://blog.csdn.net/lmj623565791/article/details/38614699</a></p>
+
+      
+      
+        <div class="page-reward">
+          <p><a href="javascript:void(0)" onclick="dashangToggle()" class="dashang" title="打赏，支持一下">赏</a></p>
+          <div class="hide_box"></div>
+          <div class="shang_box">
+            <a class="shang_close" href="javascript:void(0)" onclick="dashangToggle()" title="关闭">×</a>
+            <div class="shang_tit">
+              <p>纯属好玩</p>
+            </div>
+            <div class="shang_payimg">
+              <img src="/img/alipayimg.jpg" alt="扫码支持" title="扫一扫" />
+            </div>
+              <div class="pay_explain">扫码打赏，你说多少就多少</div>
+            <div class="shang_payselect">
+              
+                <div class="pay_item checked" data-id="alipay">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/alipay.png" alt="支付宝" /></span>
+                </div>
+              
+              
+                <div class="pay_item" data-id="wechat">
+                  <span class="radiobox"></span>
+                  <span class="pay_logo"><img src="/img/weixin.png" alt="微信" /></span>
+                </div>
+              
+            </div>
+            <div class="shang_info">
+              <p>打开<span id="shang_pay_txt">支付宝</span>扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+        </div>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/zepto/1.2.0/zepto.min.js"></script>
+        <script type="text/javascript">
+          $(".pay_item").click(function(){
+            $(this).addClass('checked').siblings('.pay_item').removeClass('checked');
+            var dataid=$(this).attr('data-id');
+            $(".shang_payimg img").attr("src","/img/"+dataid+"img.jpg");
+            $("#shang_pay_txt").text(dataid=="alipay"?"支付宝":"微信");
+          });
+          function dashangToggle(){
+            $(".hide_box").fadeToggle();
+            $(".shang_box").fadeToggle();
+          }
+        </script>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2014/08/20/xutils/">xutils HttpUtils</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 aso233 的个人博客">aso233</a></p>
+        <p><span>发布时间:</span>2014年08月20日 - 18时13分</p>
+        <p><span>最后更新:</span>2017年03月08日 - 16时43分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2014/08/20/xutils/" title="xutils HttpUtils">http://yoursite.com/2014/08/20/xutils/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2014/08/20/xutils/　　作者: aso233" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2015/05/18/多线程下载总结/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          多线程下载总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/06/11/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hello World</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#xutils-HttpUtils"><span class="toc-number">1.</span> <span class="toc-text">xutils HttpUtils</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2014/08/20/xutils/" data-title="xutils HttpUtils" data-url="http://yoursite.com/2014/08/20/xutils/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2015/05/18/多线程下载总结/" title="上一篇: 多线程下载总结">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2014/06/11/hello-world/" title="下一篇: Hello World">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/10/14/CentOS 搭建android环境/">CentOS 搭建android环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/28/AndfixTool/">AndfixTool</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/12/Git/">Git</a></li><li class="post-list-item"><a class="post-list-link" href="/2015/05/18/多线程下载总结/">多线程下载总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/08/20/xutils/">xutils HttpUtils</a></li><li class="post-list-item"><a class="post-list-link" href="/2014/06/11/hello-world/">Hello World</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 aso233
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/luuman/hexo-theme-spfk" target="_blank">spfk</a> by luuman
+            </div>
+        </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
